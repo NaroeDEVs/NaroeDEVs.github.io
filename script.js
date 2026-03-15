@@ -64,3 +64,29 @@ function atnaujintiLaikmacius() {
 
 setInterval(atnaujintiLaikmacius, 1000);
 atnaujintiLaikmacius();
+
+async function getVisitorInfo() {
+    try {
+        // Naudojame Cloudflare "trace" paslaugą informacijai gauti
+        const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace');
+        const data = await response.text();
+
+        // Ištraukiame IP ir šalies kodą (pvz., LT)
+        const ip = data.match(/ip=(.*)/)[1];
+        const loc = data.match(/loc=(.*)/)[1];
+
+        const welcomeElement = document.getElementById('welcome-msg');
+
+        if (loc === 'LT') {
+            welcomeElement.innerText = `Welcome user from Lithuania! (IP: ${ip})`;
+        } else {
+            welcomeElement.innerText = `Welcome user from ${loc}! (IP: ${ip})`;
+        }
+    } catch (error) {
+        console.error('Nepavyko gauti lankytojo info:', error);
+        document.getElementById('welcome-msg').innerText = "Welcome, guest!";
+    }
+}
+
+// Paleidžiame funkciją užkrovus puslapį
+getVisitorInfo();
