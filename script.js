@@ -66,26 +66,28 @@ setInterval(atnaujintiLaikmacius, 1000);
 atnaujintiLaikmacius();
 async function getVisitorCity() {
     const welcomeElement = document.getElementById('welcome-msg');
-    welcomeElement.innerText = ""; // Išvalome pradinį tekstą
-
+    
     try {
         const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
         
         const fullText = `Welcome user from ${data.city}! (IP: ${data.ip})`;
         
-        // Rašymo efektas
+        welcomeElement.innerText = ""; 
         let i = 0;
-        function typeWriter() {
+
+        function rasyk() {
             if (i < fullText.length) {
                 welcomeElement.innerText += fullText.charAt(i);
                 i++;
-                setTimeout(typeWriter, 50); // Greitis (50ms tarp raidžių)
+                setTimeout(rasyk, 70); 
             }
         }
-        typeWriter();
+
+        rasyk();
 
     } catch (error) {
+        console.error("Klaida:", error);
         welcomeElement.innerText = "Welcome, guest!";
     }
 }
