@@ -1,0 +1,102 @@
+body {
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Courier New', monospace;
+    color: #d1d1d1;
+}
+
+.langas {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
+    background-color: #1a1a1b;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border: 1px solid #333;
+}
+
+.virsutine-juosta, .apatine-juosta {
+    background-color: #3e4451;
+    color: #bbc2cf;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.turinys {
+    padding: 10px 40px;
+    flex-grow: 1;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+.komentaras { color: #5b6268; }
+.pavadinimas { color: #51afef; font-weight: bold; font-size: 1.3rem; padding-bottom: 20px; margin-top: -15px; }
+.antraste-1 { color: #51afef; font-weight: bold; margin-top: 20px; }
+.antraste-2 { color: #c678dd; padding-left: 20px; font-weight: bold; margin-top: 10px;}
+.zalias-tekstas { color: #98be65; }
+.nuoroda { color: #ecbe7b; text-decoration: underline; }
+.nuoroda:hover { color: #da8548; }
+
+ul { list-style-type: none; padding-left: 20px; margin: 5px 0; }
+li::before { content: "- "; color: #51afef; }
+p { margin: 5px 0 5px 20px; }
+
+.laikmaciai {
+    border-top: 1px solid #3e4451;
+    margin-top: 30px;
+    padding-top: 15px;
+    font-size: 0.9rem;
+    color: #bbc2cf;
+}
+
+.terminalasStilius {
+    padding: 10px 40px; 
+    background-color: #1a1a1b; 
+    display: block; 
+    flex-grow: 0; 
+}
+
+.terminalo-efektas {
+    color: #98be65;
+    text-shadow: 0 0 5px rgba(152, 190, 101, 0.7);
+    font-family: 'Source Code Pro', 'Courier New', monospace;
+    margin: 0;
+    margin-left: -50px; 
+}
+
+.en { display: none; } 
+
+body.angliskai .lt { display: none; } 
+body.angliskai span.en { display: inline; } 
+
+.kalbos-mygtukas {
+    background-color: transparent;
+    color: #5b6268;
+    border: 1px solid #5b6268;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.kalbos-mygtukas:hover {
+    color: #98be65;
+    border-color: #98be65;
+}
+
+.kalbos-mygtukas.aktyvus {
+    background-color: #98be65;
+    color: #1a1a1b;
+    border-color: #98be65;
+}
