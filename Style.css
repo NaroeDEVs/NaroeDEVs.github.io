@@ -133,3 +133,14 @@ body.angliskai span.en { display: inline; }
         font-size: 0.8rem;
     }
 }
+
+#welcome-msg::after {
+    content: "|";
+    animation: mirksejimasis 0.8s infinite;
+    color: #98be65;
+}
+
+@keyframes mirksejimasis {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
