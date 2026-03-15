@@ -100,3 +100,36 @@ body.angliskai span.en { display: inline; }
     color: #1a1a1b;
     border-color: #98be65;
 }
+
+@media (max-width: 768px) {
+    .langas {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0; 
+        border: none;
+    }
+
+    .turinys {
+        padding: 15px 15px; 
+    }
+
+    .terminalo-efektas {
+        margin-left: 0; 
+        font-size: 0.85rem;
+    }
+
+    .virsutine-juosta, .apatine-juosta {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .kalbos-mygtukas {
+        margin-left: 5px;
+        padding: 2px 5px;
+        font-size: 0.8rem;
+    }
+
+    .laikmaciai {
+        font-size: 0.8rem;
+    }
+}
