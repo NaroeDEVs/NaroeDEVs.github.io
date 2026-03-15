@@ -69,13 +69,20 @@ async function getVisitorCity() {
     welcomeElement.innerText = "Connecting..."; 
 
     try {
-        // Naudojame ipwho.is, kuris yra greitas ir patikimas
-        const response = await fetch('https://ipwho.is/');
+        // Pakeistas API į geojs.io (mažiau tikimybės, kad bus blokuojamas)
+        const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
+        
+        if (!response.ok) {
+            throw new Error(`API klaida: ${response.status}`);
+        }
+
         const data = await response.json();
         
-        if (!data.success) throw new Error("API limitas");
+        // geojs.io grąžina 'city' ir 'ip'
+        const miestas = data.city || "Unknown City";
+        const ipAdresas = data.ip || "Unknown IP";
 
-        const fullText = `Welcome user from ${data.city}! (IP: ${data.ip})`;
+        const fullText = `Welcome user from ${miestas}! (IP: ${ipAdresas})`;
         welcomeElement.innerText = ""; 
         let i = 0;
 
@@ -89,8 +96,22 @@ async function getVisitorCity() {
         rasyk();
 
     } catch (error) {
-        console.error("Klaida:", error);
-        welcomeElement.innerText = "Welcome, explorer!";
+        // Konsolėje pamatysi tikrąją priežastį (pvz., CORS, Blocked by Client)
+        console.error("Klaida gaunant lokaciją:", error);
+        
+        // Pakeičiame fallback tekstą, kad spausdinimo efektas išliktų
+        const fallbackText = "Welcome, explorer! (Location hidden)";
+        welcomeElement.innerText = "";
+        let j = 0;
+        
+        function rasykFallback() {
+            if (j < fallbackText.length) {
+                welcomeElement.innerText += fallbackText.charAt(j);
+                j++;
+                setTimeout(rasykFallback, 80);
+            }
+        }
+        rasykFallback();
     }
 }
 
