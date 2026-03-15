@@ -67,6 +67,8 @@ atnaujintiLaikmacius();
 async function getVisitorCity() {
     const welcomeElement = document.getElementById('welcome-msg');
     
+    welcomeElement.innerText = "Connecting..."; 
+
     try {
         const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
@@ -80,10 +82,11 @@ async function getVisitorCity() {
             if (i < fullText.length) {
                 welcomeElement.innerText += fullText.charAt(i);
                 i++;
-                setTimeout(rasyk, 200); 
+                setTimeout(rasyk, 100); 
             }
         }
 
+        // Pradedame rašymo procesą
         rasyk();
 
     } catch (error) {
