@@ -65,16 +65,28 @@ function atnaujintiLaikmacius() {
 setInterval(atnaujintiLaikmacius, 1000);
 atnaujintiLaikmacius();
 async function getVisitorCity() {
+    const welcomeElement = document.getElementById('welcome-msg');
+    welcomeElement.innerText = ""; // Išvalome pradinį tekstą
+
     try {
         const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
         
-        const city = data.city;
-        const ip = data.ip;
+        const fullText = `Welcome user from ${data.city}! (IP: ${data.ip})`;
         
-        document.getElementById('welcome-msg').innerText = `Welcome user from ${city}! (IP: ${ip})`;
+        // Rašymo efektas
+        let i = 0;
+        function typeWriter() {
+            if (i < fullText.length) {
+                welcomeElement.innerText += fullText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50); // Greitis (50ms tarp raidžių)
+            }
+        }
+        typeWriter();
+
     } catch (error) {
-        document.getElementById('welcome-msg').innerText = "Welcome, guest!";
+        welcomeElement.innerText = "Welcome, guest!";
     }
 }
 
