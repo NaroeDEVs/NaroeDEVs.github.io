@@ -80,7 +80,7 @@ async function getVisitorCity() {
             if (i < fullText.length) {
                 welcomeElement.innerText += fullText.charAt(i);
                 i++;
-                setTimeout(rasyk, 70); 
+                setTimeout(rasyk, 200); 
             }
         }
 
