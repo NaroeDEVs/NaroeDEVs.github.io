@@ -66,15 +66,16 @@ setInterval(atnaujintiLaikmacius, 1000);
 atnaujintiLaikmacius();
 async function getVisitorCity() {
     const welcomeElement = document.getElementById('welcome-msg');
-    
     welcomeElement.innerText = "Connecting..."; 
 
     try {
-        const response = await fetch('https://ipapi.co/json/');
+        // Naudojame ipwho.is, kuris yra greitas ir patikimas
+        const response = await fetch('https://ipwho.is/');
         const data = await response.json();
         
+        if (!data.success) throw new Error("API limitas");
+
         const fullText = `Welcome user from ${data.city}! (IP: ${data.ip})`;
-        
         welcomeElement.innerText = ""; 
         let i = 0;
 
@@ -82,16 +83,14 @@ async function getVisitorCity() {
             if (i < fullText.length) {
                 welcomeElement.innerText += fullText.charAt(i);
                 i++;
-                setTimeout(rasyk, 100); 
+                setTimeout(rasyk, 80); 
             }
         }
-
-        // Pradedame rašymo procesą
         rasyk();
 
     } catch (error) {
         console.error("Klaida:", error);
-        welcomeElement.innerText = "Welcome, guest!";
+        welcomeElement.innerText = "Welcome, explorer!";
     }
 }
 
