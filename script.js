@@ -69,7 +69,6 @@ async function getVisitorCity() {
     welcomeElement.innerText = "Connecting..."; 
 
     try {
-        // Pakeistas API į geojs.io (mažiau tikimybės, kad bus blokuojamas)
         const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
         
         if (!response.ok) {
@@ -96,10 +95,8 @@ async function getVisitorCity() {
         rasyk();
 
     } catch (error) {
-        // Konsolėje pamatysi tikrąją priežastį (pvz., CORS, Blocked by Client)
         console.error("Klaida gaunant lokaciją:", error);
         
-        // Pakeičiame fallback tekstą, kad spausdinimo efektas išliktų
         const fallbackText = "Welcome, explorer! (Location hidden)";
         welcomeElement.innerText = "";
         let j = 0;
