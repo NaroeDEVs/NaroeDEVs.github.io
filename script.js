@@ -40,7 +40,6 @@ function atnaujintiLaikmacius() {
     
     document.getElementById('metu-galas').innerText = `${mgDienos}${dienosZodis} ${mgValandos}${valZodis} ${mgMinutes}${minZodis} ${mgSekundes}${sekZodis}`;
 
-    // 2. Nuo Linux išleidimo
     const praejoLinux = dabar - LINUX_ISLEIDIMAS;
     const linDienos = Math.floor(praejoLinux / (1000 * 60 * 60 * 24));
     const linValandos = Math.floor((praejoLinux % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
