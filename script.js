@@ -77,7 +77,6 @@ async function getVisitorCity() {
 
         const data = await response.json();
         
-        // geojs.io grąžina 'city' ir 'ip'
         const miestas = data.city || "Unknown City";
         const ipAdresas = data.ip || "Unknown IP";
 
