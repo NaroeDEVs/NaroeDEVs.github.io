@@ -123,6 +123,11 @@ body.angliskai span.en { display: inline; }
         padding: 5px;
     }
 
+    .apatine-juosta {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .kalbos-mygtukas {
         margin-left: 5px;
         padding: 2px 5px;
