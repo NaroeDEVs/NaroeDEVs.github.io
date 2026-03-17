@@ -30,6 +30,11 @@ body {
     font-weight: bold;
 }
 
+.apatine-juosta {
+        display: flex;
+        justify-content: space-between;
+    }
+
 .turinys {
     padding: 10px 40px;
     flex-grow: 1;
@@ -123,10 +128,7 @@ body.angliskai span.en { display: inline; }
         padding: 5px;
     }
 
-    .apatine-juosta {
-        display: flex;
-        justify-content: space-between;
-    }
+    
 
     .kalbos-mygtukas {
         margin-left: 5px;
